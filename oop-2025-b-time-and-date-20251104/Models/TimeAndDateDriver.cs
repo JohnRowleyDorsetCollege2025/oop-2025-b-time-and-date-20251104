@@ -19,6 +19,7 @@ namespace oop_2025_b_time_and_date_20251104.Models
             DaysUntilMyNextBirthday();
             DurationAndDeadline();
             ParseDateString();
+            EventCountDownDriver();
 
         }
 
@@ -78,7 +79,7 @@ namespace oop_2025_b_time_and_date_20251104.Models
         {
             DateTime today = DateTime.Today;
             DateTime myBirthDay = new DateTime(today.Year, 6, 14);
-            
+
             if (today > myBirthDay)
             {
                 myBirthDay = myBirthDay.AddYears(1);
@@ -95,7 +96,7 @@ namespace oop_2025_b_time_and_date_20251104.Models
         {
             TimeSpan duration = new TimeSpan(2, 3, 30, 0);
             DateTime deadline = DateTime.Now + duration;
-           
+
             Console.WriteLine($"deadline: {deadline}");
 
         }
@@ -105,8 +106,14 @@ namespace oop_2025_b_time_and_date_20251104.Models
             string dateText = "2025-12-31 23:59";
             DateTime parsed = DateTime.Parse(dateText);
 
-             Console.WriteLine($"parsed: {parsed}");
+            Console.WriteLine($"parsed: {parsed}");
 
+        }
+
+        public static void EventCountDownDriver()
+        {
+            EventCountdown evt = new(new DateTime(2026, 6, 14));
+            Console.WriteLine($"Days Remaining: {evt.GetDaysRemaining()}");
         }
     }
 }
