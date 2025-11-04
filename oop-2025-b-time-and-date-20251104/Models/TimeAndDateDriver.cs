@@ -17,10 +17,12 @@ namespace oop_2025_b_time_and_date_20251104.Models
             DateFormatting();
             DaysUntilNextChristmas();
             DaysUntilMyNextBirthday();
+            DurationAndDeadline();
+            ParseDateString();
 
         }
 
-        public  static void ShowAppDetails()
+        public static void ShowAppDetails()
         {
             Console.WriteLine($"App Title: {AppConstants.Title}");
             Console.WriteLine($"App Version: {AppConstants.Version}");
@@ -68,24 +70,44 @@ namespace oop_2025_b_time_and_date_20251104.Models
             }
             TimeSpan difference = christmasDay - today;
             Console.WriteLine($"Days until Christmas: {difference.Days}");
-            return difference.Days; 
+            return difference.Days;
 
         }
 
         public static int DaysUntilMyNextBirthday()
         {
             DateTime today = DateTime.Today;
-            DateTime christmasDay = new DateTime(today.Year, 12, 25);
-            Console.WriteLine($"christmasDay{christmasDay.ToShortDateString()}");
-
-            if (today > christmasDay)
+            DateTime myBirthDay = new DateTime(today.Year, 6, 14);
+            
+            if (today > myBirthDay)
             {
-                christmasDay = christmasDay.AddYears(1);
+                myBirthDay = myBirthDay.AddYears(1);
             }
-            TimeSpan difference = christmasDay - today;
-            Console.WriteLine($"Days until Christmas: {difference.Days}");
+            Console.WriteLine($"myBirthDay{myBirthDay.ToShortDateString()}");
+
+            TimeSpan difference = myBirthDay - today;
+            Console.WriteLine($"Days until myBirthDay: {difference.Days}");
             return difference.Days;
+
+        }
+
+        public static void DurationAndDeadline()
+        {
+            TimeSpan duration = new TimeSpan(2, 3, 30, 0);
+            DateTime deadline = DateTime.Now + duration;
+           
+            Console.WriteLine($"deadline: {deadline}");
+
+        }
+
+        public static void ParseDateString()
+        {
+            string dateText = "2025-12-31 23:59";
+            DateTime parsed = DateTime.Parse(dateText);
+
+             Console.WriteLine($"parsed: {parsed}");
 
         }
     }
 }
+
