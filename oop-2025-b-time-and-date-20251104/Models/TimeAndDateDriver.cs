@@ -14,6 +14,10 @@ namespace oop_2025_b_time_and_date_20251104.Models
             ShowAppDetails();
             UTCDemo();
             LocalToUTC();
+            DateFormatting();
+            DaysUntilNextChristmas();
+            DaysUntilMyNextBirthday();
+
         }
 
         public  static void ShowAppDetails()
@@ -40,6 +44,47 @@ namespace oop_2025_b_time_and_date_20251104.Models
             Console.WriteLine($"Local Time: {localTime}");
             Console.WriteLine($"UTC Time: {utcNow}");
 
+
+        }
+
+        public static void DateFormatting()
+        {
+            DateTime localTime = DateTime.Now;
+
+            Console.WriteLine($"Local Time: {localTime}");
+            Console.WriteLine($"Short Date: {localTime.ToShortDateString()}");
+            Console.WriteLine($"Custom Format: {localTime: dddd, dd MMMM yyyy HH:mm}");
+        }
+
+        public static int DaysUntilNextChristmas()
+        {
+            DateTime today = DateTime.Today;
+            DateTime christmasDay = new DateTime(today.Year, 12, 25);
+            Console.WriteLine($"christmasDay{christmasDay.ToShortDateString()}");
+
+            if (today > christmasDay)
+            {
+                christmasDay = christmasDay.AddYears(1);
+            }
+            TimeSpan difference = christmasDay - today;
+            Console.WriteLine($"Days until Christmas: {difference.Days}");
+            return difference.Days; 
+
+        }
+
+        public static int DaysUntilMyNextBirthday()
+        {
+            DateTime today = DateTime.Today;
+            DateTime christmasDay = new DateTime(today.Year, 12, 25);
+            Console.WriteLine($"christmasDay{christmasDay.ToShortDateString()}");
+
+            if (today > christmasDay)
+            {
+                christmasDay = christmasDay.AddYears(1);
+            }
+            TimeSpan difference = christmasDay - today;
+            Console.WriteLine($"Days until Christmas: {difference.Days}");
+            return difference.Days;
 
         }
     }
